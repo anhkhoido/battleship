@@ -7,12 +7,12 @@ var gameBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
 var opposingBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
 
 enum PositionType {
-    HORIZONTAL,
-    VERTICAL,
+    HORIZONTAL = "Horizontal",
+    VERTICAL = "Vertical",
 }
 
 class Ship {
-    constructor(public hitPoints: number, public xAxis : number, public yAxis : number, public positionType : PositionType) {}
+    constructor(public hitPoints: number, public positionType : PositionType, public letterAxis : string, public yAxis : number) {}
 }
 
 // Player's board
@@ -20,6 +20,57 @@ createBoard();
 displayBoard();
 
 createOpposingBoard();
+placeShipsOfEnemy();
+
+function placeShipsOfEnemy() : void {
+    const generateRandomNumber = (min: number, max: number) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    var randomPositionForDestroyer : number = generateRandomNumber(1, 2);
+    var destroyer = createEnemyShip(5, 
+        randomPositionForDestroyer == 1 ? PositionType.HORIZONTAL : PositionType.VERTICAL);
+}
+
+function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship {
+    var yPosition : number = 1;
+
+    const generateRandomNumber = (min: number, max: number) => {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    var charCode : number = generateRandomNumber(1, 10);
+    var letter : string = String.fromCharCode(65 + charCode);
+    
+    var ship = new Ship(hitPoints, positionType, letter, yPosition);
+    var childNodesOfOpposingSide = opposingSide.childNodes;
+
+    function excludeBrTags(element : HTMLElement) : boolean {
+        return element.tagName !== 'BR';
+    }
+
+    var arrayOfChildrenForOpposingSide : any = Array.prototype
+        .slice
+        .call(childNodesOfOpposingSide)
+        .filter(excludeBrTags);
+
+    if (PositionType.HORIZONTAL === ship.positionType) {
+        do {
+            var letterToInt = parseInt(letter);
+            yPosition++;
+            hitPoints--;
+        } while (hitPoints !== 0);
+    } else if (PositionType.VERTICAL === ship.positionType) {
+        do {
+            alert("Vertical");
+            hitPoints--;
+        } while (hitPoints !== 0);
+    }
+    return ship;
+}
 
 function createBoard() : void {
     for (var i = 0; i < 11; i++) {
@@ -36,8 +87,9 @@ function createBoard() : void {
             } else if (i !== 0 && j === 0) {
                 mySpan.innerText = i.toString();
             } else if (i >= 1 && j >= 1) {
-                var temp : string = String.fromCharCode(65 + (j - 1)) + ", " + i.toString(); 
+                var temp : string = String.fromCharCode(65 + (j - 1)) + "," + i.toString(); 
                 mySpan.innerText = temp;
+                mySpan.title = temp;
             }
             rowOfSpans.push(mySpan);
         }
@@ -71,8 +123,9 @@ function createOpposingBoard() : void {
             } else if (i !== 0 && j === 0) {
                 mySpan.innerText = i.toString();
             } else if (i >= 1 && j >= 1) {
-                var temp : string = String.fromCharCode(65 + (j - 1)) + ", " + i.toString(); 
-                mySpan.innerText = temp;
+                var temp : string = String.fromCharCode(65 + (j - 1)) + "," + i.toString(); 
+                mySpan.title = temp;
+                mySpan.innerHTML = '&nbsp;';
             }
             rowOfSpans.push(mySpan);
         }
