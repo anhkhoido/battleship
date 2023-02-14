@@ -42,8 +42,13 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+    // Starting position
     var charCode : number = generateRandomNumber(1, 10);
     var letter : string = String.fromCharCode(65 + charCode);
+    var numberOnYAxis : number = generateRandomNumber(1, 10);
+
+    var arrayOfCoordinates : string[] = new Array();   
+
     
     var ship = new Ship(hitPoints, positionType, letter, yPosition);
     var childNodesOfOpposingSide = opposingSide.childNodes;
@@ -56,19 +61,19 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
         .slice
         .call(childNodesOfOpposingSide)
         .filter(excludeBrTags);
-
     if (PositionType.HORIZONTAL === ship.positionType) {
         do {
-            var letterToInt = parseInt(letter);
-            yPosition++;
+            charCode++;
+            letter = String.fromCharCode(65 + charCode);
+            arrayOfCoordinates.push(letter + numberOnYAxis);
             hitPoints--;
         } while (hitPoints !== 0);
     } else if (PositionType.VERTICAL === ship.positionType) {
         do {
-            alert("Vertical");
             hitPoints--;
         } while (hitPoints !== 0);
     }
+    alert("Array of coordinates: " + arrayOfCoordinates);
     return ship;
 }
 
