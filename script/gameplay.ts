@@ -43,7 +43,7 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     // Starting position
-    var charCode : number = generateRandomNumber(1, 10);
+    var charCode : number = generateRandomNumber(1, 10 - hitPoints);
     var letter : string = String.fromCharCode(65 + charCode);
     var numberOnYAxis : number = generateRandomNumber(1, 10);
 
