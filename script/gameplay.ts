@@ -3,6 +3,7 @@ spanTagWithCurrentYear.innerText = new Date().getFullYear().toString();
 var table = document.getElementById('table_game') as HTMLDivElement;
 var arrayAllCoordinatesOfShips = new Array<Array<string>>;
 var arrayOfShips = new Array<Ship>;
+let resetButton = document.getElementById('reset_button') as HTMLButtonElement;
 
 var gameBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
 
@@ -16,12 +17,19 @@ class Ship {
 }
 
 // Player's board
+placeShipsOfEnemy();
 createBoard();
 displayBoard();
-placeShipsOfEnemy();
 
-arrayAllCoordinatesOfShips.forEach(function(value) {
-    alert(value);
+resetButton.addEventListener('click', function() {
+    arrayOfShips.length = 0;
+    arrayAllCoordinatesOfShips.length = 0;
+    table.innerHTML = '';
+    gameBoard.length = 0;
+
+    placeShipsOfEnemy();
+    createBoard();
+    displayBoard();
 });
 
 function placeShipsOfEnemy() : void {
@@ -102,6 +110,7 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
 }
 
 function createBoard() : void {
+    var flattennedArrayOfCoordinatesAllShips = arrayAllCoordinatesOfShips.reduce((accumulator, value) => accumulator.concat(value), []);
     for (var i = 0; i < 11; i++) {
         var rowOfSpans : HTMLSpanElement[] = new Array<HTMLSpanElement>;
         for (var j = 0; j < 11; j++) {
@@ -119,6 +128,15 @@ function createBoard() : void {
                 var temp : string = String.fromCharCode(65 + (j - 1)) + i.toString(); 
                 mySpan.innerText = temp;
                 mySpan.title = temp;
+                mySpan.addEventListener("click", function() {
+                    var result = flattennedArrayOfCoordinatesAllShips.indexOf(mySpan.title);
+                    if (result >= 0) {
+                        mySpan.innerText = 'O';
+                        mySpan.style.backgroundColor = '#FF0808';
+                    } else {
+                        mySpan.innerText = 'X';
+                    }
+                });
             }
             rowOfSpans.push(mySpan);
         }
