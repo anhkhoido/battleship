@@ -7,6 +7,9 @@ let resetButton = document.getElementById('reset_button') as HTMLButtonElement;
 
 var gameBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
 
+let explosionSound = document.getElementById('explosion') as HTMLAudioElement;
+let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
+
 enum PositionType {
     HORIZONTAL = "Horizontal",
     VERTICAL = "Vertical",
@@ -133,8 +136,10 @@ function createBoard() : void {
                     if (result >= 0) {
                         mySpan.innerText = 'O';
                         mySpan.style.backgroundColor = '#FF0808';
+                        explosionSound.play();
                     } else {
                         mySpan.innerText = 'X';
+                        waterSplash.play();
                     }
                 });
             }

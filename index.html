@@ -12,9 +12,14 @@
 
     <link rel="stylesheet" href="style/stylesheet.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
+<audio id="missile" src="sounds/missile.mp3"></audio>
+<audio id="explosion" src="sounds/explosion.mp3"></audio>
+<audio id="waterSplash" src="sounds/waterSplash.mp3"></audio>
+
 <header>
     <h1 style="text-align: center;">Battleship</h1>
 </header>
@@ -23,7 +28,7 @@
 </section>
 <section id="section_for_score">
     <h2>Your score: 0</h2>
-    <button type="button" id="reset_button">Reset</button>
+    <button type="button" class="bi bi-arrow-counterclockwise" id="reset_button">Reset</button>
 </section>
 <footer>
     &copy;&nbsp;<span id="span_current_year_id">&nbsp;</span>. Anh Khoi Do. All rights reserved.
