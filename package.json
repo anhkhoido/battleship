@@ -1,0 +1,23 @@
+{
+    "name": "battleship",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script/gameplay.js",
+    "scripts": {
+      "test": "jest"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/anhkhoido/battleship.git"
+    },
+    "keywords": [],
+    "author": "Anh Khoi Do",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/anhkhoido/battleship/issues"
+    },
+    "homepage": "https://github.com/anhkhoido/battleship#readme",
+    "devDependencies": {
+      "typescript": "^4.9.4"
+    }
+  }

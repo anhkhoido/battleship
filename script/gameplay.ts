@@ -3,7 +3,6 @@ spanTagWithCurrentYear.innerText = new Date().getFullYear().toString();
 var table = document.getElementById('table_game') as HTMLDivElement;
 var arrayAllCoordinatesOfShips = new Array<Array<string>>;
 var arrayOfShips = new Array<Ship>;
-let resetButton = document.getElementById('reset_button') as HTMLButtonElement;
 
 var gameBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
 
@@ -23,17 +22,6 @@ class Ship {
 placeShipsOfEnemy();
 createBoard();
 displayBoard();
-
-resetButton.addEventListener('click', function() {
-    arrayOfShips.length = 0;
-    arrayAllCoordinatesOfShips.length = 0;
-    table.innerHTML = '';
-    gameBoard.length = 0;
-
-    placeShipsOfEnemy();
-    createBoard();
-    displayBoard();
-});
 
 function placeShipsOfEnemy() : void {
     const generateRandomNumber = (min: number, max: number) => {
