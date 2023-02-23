@@ -6,6 +6,8 @@ var arrayOfShips = new Array<Ship>;
 let resetButton = document.getElementById('reset_button') as HTMLButtonElement;
 
 var gameBoard : HTMLSpanElement[][] = new Array<Array<HTMLSpanElement>>;
+var scoreHeading = document.getElementById('score') as HTMLHeadingElement;
+var actualScore : number = 0;
 
 let explosionSound = document.getElementById('explosion') as HTMLAudioElement;
 let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
@@ -23,17 +25,6 @@ class Ship {
 placeShipsOfEnemy();
 createBoard();
 displayBoard();
-
-resetButton.addEventListener('click', function() {
-    arrayOfShips.length = 0;
-    arrayAllCoordinatesOfShips.length = 0;
-    table.innerHTML = '';
-    gameBoard.length = 0;
-
-    placeShipsOfEnemy();
-    createBoard();
-    displayBoard();
-});
 
 function placeShipsOfEnemy() : void {
     const generateRandomNumber = (min: number, max: number) => {
@@ -137,6 +128,8 @@ function createBoard() : void {
                         mySpan.innerText = 'O';
                         mySpan.style.backgroundColor = '#FF0808';
                         explosionSound.play();
+                        actualScore++;
+                        scoreHeading.innerText = 'Your score: ' + actualScore;
                     } else {
                         mySpan.innerText = 'X';
                         waterSplash.play();
