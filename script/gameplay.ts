@@ -67,7 +67,7 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
     var ship = new Ship(hitPoints, positionType, new Array());
     var foundDuplicate : boolean = false;
     var flattennedArrayOfCoordinatesAllShips = arrayAllCoordinatesOfShips.reduce((accumulator, value) => accumulator.concat(value), []);
-
+    var remainingHitPointsForDoWhile = hitPoints;
     if (PositionType.HORIZONTAL === ship.positionType) {
         var charCode : number = generateRandomNumber(1, 10 - hitPoints - 1);
         var letter : string = String.fromCharCode(65 + charCode);
@@ -79,9 +79,9 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
             if (!foundDuplicate) {
                 ship.coordinates.push(letter + numberOnYAxis);
                 arrayOfCoordinates.push(letter + numberOnYAxis);
-                hitPoints--;
+                remainingHitPointsForDoWhile--;
             }
-        } while (hitPoints !== 0 && !foundDuplicate);
+        } while (remainingHitPointsForDoWhile !== 0 && !foundDuplicate);
     } else if (PositionType.VERTICAL === ship.positionType) {
         var charCode : number = generateRandomNumber(1, 10 - hitPoints - 1);
         var letter : string = String.fromCharCode(65 + charCode);
@@ -93,10 +93,11 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
             if (!foundDuplicate) {
                 ship.coordinates.push(letter + numberOnYAxis);
                 arrayOfCoordinates.push(letter + numberOnYAxis);
-                hitPoints--;
+                remainingHitPointsForDoWhile--;
             }
-        } while (hitPoints !== 0 && !foundDuplicate);
+        } while (remainingHitPointsForDoWhile !== 0 && !foundDuplicate);
     }
+
     if (!foundDuplicate) {
         arrayAllCoordinatesOfShips.push(arrayOfCoordinates);
     }
@@ -126,13 +127,13 @@ function createBoard() : void {
                 mySpan.title = temp;
                 mySpan.addEventListener("click", function() {
                     var result = flattennedArrayOfCoordinatesAllShips.indexOf(mySpan.title);
-                    if (result >= 0) {
+                    if (result >= 0 && mySpan.innerText !== 'O') {
                         mySpan.innerText = 'O';
                         mySpan.style.backgroundColor = '#FF0808';
                         explosionSound.play();
                         actualScore++;
                         scoreHeading.innerText = 'Your score: ' + actualScore;
-                    } else {
+                    } else if (mySpan.innerText !== 'X' && mySpan.innerText !== 'O' && result === -1) {
                         mySpan.innerText = 'X';
                         waterSplash.play();
                     }
