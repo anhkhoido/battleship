@@ -115,9 +115,11 @@ function createBoard() : void {
                     mySpan.innerHTML = '&nbsp;';
                 } else {
                     mySpan.innerText = String.fromCharCode(65 + (j - 1));
+                    mySpan.style.backgroundColor = '#333';
                 }
             } else if (i !== 0 && j === 0) {
                 mySpan.innerText = i.toString();
+                mySpan.style.backgroundColor = '#333';
             } else if (i >= 1 && j >= 1) {
                 var temp : string = String.fromCharCode(65 + (j - 1)) + i.toString(); 
                 mySpan.innerText = temp;
