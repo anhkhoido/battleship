@@ -1,17 +1,18 @@
 @white: #FFF;
 @black: #000;
+@green: #00FF00;
 @default-font-family: Arial, Helvetica, sans-serif;
 
 html, body {
     margin: 0;
     padding: 0;
-    background-color: @white;
+    background-color: @black;
     font-family: @default-font-family;
-    color: @black;
+    color: @green;
 }
 
 header {
-    background-color: #F03E0B;
+    background-color: inherit;
     padding: 5px;
     color: @white;
 }
@@ -22,7 +23,7 @@ section#section_for_score {
 
 span.grid_square {
     display: inline-block;
-    border: 1px solid @black;
+    border: 1px solid @green;
     width: 50px;
     text-align: center;
 }
@@ -33,22 +34,10 @@ span.grid_square {
     width: 590px;
 }
 
-#reset_button {
-    background-color: #0A92DF;
-    font-size: large;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 25px;
-    width: 150px;
-    border: 0;
-    font-weight: bold;
-    color: @white;
-}
-
 footer {
-    color: @black;
+    color: @green;
     font-family: @default-font-family;
     text-align: center;
-    background-color: coral;
+    background-color: inherit;
     padding: 5px;
 }
