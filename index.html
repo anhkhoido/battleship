@@ -4,11 +4,26 @@
     <title>Battleship</title>
     <meta charset="utf-8">
     <meta name="author" content="Anh Khoi Do">
-    <meta name="description" content="Battleship with TypeScript">
+    <meta name="description" content="Battleship with TypeScript by Anh Khoi Do">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://anhkhoido.com/games/pictures/battleshipAkdTypeScriptThumbnail.jpg">
     <meta name="twitter:site" content="@anhkhoido">
     <meta name="twitter:creator" content="@anhkhoido">
+    <meta name="twitter:title" content="Battleship with TypeScript by Anh Khoi Do">
+    <meta name="twitter:description" content="One web rendition of the classic board game Battleship with HTML5, CSS, and TypeScript.">
+    <meta property="og:url" content="http://anhkhoido.com/games/battleship" />
+    <meta property="og:title" content="Battleship with TypeScript by Anh Khoi Do" />
+    <meta property="og:description" content="One web rendition of the classic board game Battleship with HTML5, CSS, and TypeScript." />
+    <meta property="og:image" content="http://anhkhoido.com/games/pictures/battleshipAkdTypeScriptThumbnail.jpg" />
+    <meta property="og:image:alt" content="Canadian coast guard patrolling the ocean.">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Anh Khoi Do">
+    
 
     <link rel="stylesheet" href="style/stylesheet.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -34,7 +49,17 @@
 <footer>
     &copy;&nbsp;<span id="span_current_year_id">&nbsp;</span>. Anh Khoi Do. All rights reserved.
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script>
+    Swal.fire({
+        icon: 'warning',
+        title: 'Ministry of National Defence',
+        titleText: 'Ministry of National Defence',
+        text: 'Greetings, Admiral! The enemy had the nerve to send ships near our coastline! Defend the country. Your objective is to sink all ships. Lastly, click on the inside of a square (the grid) in order to fire a missile.',
+        confirmButtonText: 'Okay!'
+    });
+</script>
 <script type="text/javascript" src="script/gameplay.js"></script>
 </body>
 </html>

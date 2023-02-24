@@ -141,6 +141,7 @@ function createBoard() : void {
                         shotsFiredHeading.innerText = 'Shots fired: ' + shotsFired;
                     } else if (mySpan.innerText !== 'X' && mySpan.innerText !== 'O' && result === -1) {
                         mySpan.innerText = 'X';
+                        mySpan.style.backgroundColor = '#339';
                         waterSplash.play();
                         shotsFired++;
                         shotsFiredHeading.innerText = 'Shots fired: ' + shotsFired;
