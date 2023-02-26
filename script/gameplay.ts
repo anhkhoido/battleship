@@ -18,6 +18,8 @@ let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
 const NUMBER_OF_RANKS_AND_FILES : number = 10;
 const FIRST_CHARCODE_FOR_LETTERS : number = 65;
 const BACKGROUND_COLOR_SQUARES_OUT_OF_RANGE : string = '#333';
+const SYMBOL_SHIP_HIT = 'O';
+const SYMBOL_MISS = 'X';
 
 enum PositionType {
     HORIZONTAL = "Horizontal",
@@ -134,17 +136,17 @@ function createBoard() : void {
                 mySpan.title = temp;
                 mySpan.addEventListener("click", function() {
                     var result = flattennedArrayOfCoordinatesAllShips.indexOf(mySpan.title);
-                    if (result >= 0 && mySpan.innerText !== 'O') {
+                    if (result >= 0 && mySpan.innerText !== SYMBOL_SHIP_HIT) {
                         updateNumberOfSunkenShips(mySpan.innerText);
-                        mySpan.innerText = 'O';
+                        mySpan.innerText = SYMBOL_SHIP_HIT;
                         mySpan.style.backgroundColor = '#FF0808';
                         explosionSound.play();
                         actualScore++;
                         shotsFired++;
                         scoreHeading.innerText = 'Your score: ' + actualScore;
                         shotsFiredHeading.innerText = 'Shots fired: ' + shotsFired;
-                    } else if (mySpan.innerText !== 'X' && mySpan.innerText !== 'O' && result === -1) {
-                        mySpan.innerText = 'X';
+                    } else if (mySpan.innerText !== SYMBOL_MISS && mySpan.innerText !== SYMBOL_SHIP_HIT && result === -1) {
+                        mySpan.innerText = SYMBOL_MISS;
                         mySpan.style.backgroundColor = '#339';
                         waterSplash.play();
                         shotsFired++;
@@ -166,10 +168,10 @@ function updateNumberOfSunkenShips(input : string) : void {
     arrayOfShips.forEach(function(ship) {
         for (var i = 0; i < ship.coordinates.length; i++) {
             if (ship.coordinates[i] === input) {
-                ship.coordinates[i] = 'O';
+                ship.coordinates[i] = SYMBOL_SHIP_HIT;
             }
         }
-        numberOfHitsTaken = ship.coordinates.filter(value => value === 'O').length;
+        numberOfHitsTaken = ship.coordinates.filter(value => value === SYMBOL_SHIP_HIT).length;
         if (ship.hitPoints === numberOfHitsTaken) {
             ship.isSunken = true;
         }
