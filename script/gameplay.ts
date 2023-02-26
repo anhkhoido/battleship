@@ -17,6 +17,7 @@ let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
 
 const NUMBER_OF_RANKS_AND_FILES : number = 10;
 const FIRST_CHARCODE_FOR_LETTERS : number = 65;
+const BACKGROUND_COLOR_SQUARES_OUT_OF_RANGE : string = '#333';
 
 enum PositionType {
     HORIZONTAL = "Horizontal",
@@ -122,11 +123,11 @@ function createBoard() : void {
                     mySpan.innerHTML = '&nbsp;';
                 } else {
                     mySpan.innerText = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + (j - 1));
-                    mySpan.style.backgroundColor = '#333';
+                    mySpan.style.backgroundColor = BACKGROUND_COLOR_SQUARES_OUT_OF_RANGE;
                 }
             } else if (i !== 0 && j === 0) {
                 mySpan.innerText = i.toString();
-                mySpan.style.backgroundColor = '#333';
+                mySpan.style.backgroundColor = BACKGROUND_COLOR_SQUARES_OUT_OF_RANGE;
             } else if (i >= 1 && j >= 1) {
                 var temp : string = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + (j - 1)) + i.toString(); 
                 mySpan.innerText = temp;
