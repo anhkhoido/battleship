@@ -16,6 +16,7 @@ let explosionSound = document.getElementById('explosion') as HTMLAudioElement;
 let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
 
 const NUMBER_OF_RANKS_AND_FILES : number = 10;
+const FIRST_CHARCODE_FOR_LETTERS : number = 65;
 
 enum PositionType {
     HORIZONTAL = "Horizontal",
@@ -75,11 +76,11 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
     var remainingHitPointsForDoWhile = hitPoints;
     if (PositionType.HORIZONTAL === ship.positionType) {
         var charCode : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints - 1);
-        var letter : string = String.fromCharCode(65 + charCode);
+        var letter : string = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + charCode);
         var numberOnYAxis : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES);
         do {
             charCode++;
-            letter = String.fromCharCode(65 + charCode);
+            letter = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + charCode);
             foundDuplicate = flattennedArrayOfCoordinatesAllShips.indexOf(letter + numberOnYAxis) >= 0;
             if (!foundDuplicate) {
                 ship.coordinates.push(letter + numberOnYAxis);
@@ -89,11 +90,11 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
         } while (remainingHitPointsForDoWhile !== 0 && !foundDuplicate);
     } else if (PositionType.VERTICAL === ship.positionType) {
         var charCode : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints - 1);
-        var letter : string = String.fromCharCode(65 + charCode);
+        var letter : string = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + charCode);
         var numberOnYAxis : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints);
         do {
             numberOnYAxis++;
-            letter = String.fromCharCode(65 + charCode);
+            letter = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + charCode);
             foundDuplicate = flattennedArrayOfCoordinatesAllShips.indexOf(letter + numberOnYAxis) >= 0;
             if (!foundDuplicate) {
                 ship.coordinates.push(letter + numberOnYAxis);
@@ -120,14 +121,14 @@ function createBoard() : void {
                 if (j === 0) {
                     mySpan.innerHTML = '&nbsp;';
                 } else {
-                    mySpan.innerText = String.fromCharCode(65 + (j - 1));
+                    mySpan.innerText = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + (j - 1));
                     mySpan.style.backgroundColor = '#333';
                 }
             } else if (i !== 0 && j === 0) {
                 mySpan.innerText = i.toString();
                 mySpan.style.backgroundColor = '#333';
             } else if (i >= 1 && j >= 1) {
-                var temp : string = String.fromCharCode(65 + (j - 1)) + i.toString(); 
+                var temp : string = String.fromCharCode(FIRST_CHARCODE_FOR_LETTERS + (j - 1)) + i.toString(); 
                 mySpan.innerText = temp;
                 mySpan.title = temp;
                 mySpan.addEventListener("click", function() {
