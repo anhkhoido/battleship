@@ -15,6 +15,8 @@ var shotsFiredHeading = document.getElementById('shots_fired') as HTMLHeadingEle
 let explosionSound = document.getElementById('explosion') as HTMLAudioElement;
 let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
 
+const NUMBER_OF_RANKS_AND_FILES : number = 10;
+
 enum PositionType {
     HORIZONTAL = "Horizontal",
     VERTICAL = "Vertical",
@@ -72,9 +74,9 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
     var flattennedArrayOfCoordinatesAllShips = arrayAllCoordinatesOfShips.reduce((accumulator, value) => accumulator.concat(value), []);
     var remainingHitPointsForDoWhile = hitPoints;
     if (PositionType.HORIZONTAL === ship.positionType) {
-        var charCode : number = generateRandomNumber(1, 10 - hitPoints - 1);
+        var charCode : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints - 1);
         var letter : string = String.fromCharCode(65 + charCode);
-        var numberOnYAxis : number = generateRandomNumber(1, 10);
+        var numberOnYAxis : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES);
         do {
             charCode++;
             letter = String.fromCharCode(65 + charCode);
@@ -86,9 +88,9 @@ function createEnemyShip(hitPoints : number, positionType : PositionType) : Ship
             }
         } while (remainingHitPointsForDoWhile !== 0 && !foundDuplicate);
     } else if (PositionType.VERTICAL === ship.positionType) {
-        var charCode : number = generateRandomNumber(1, 10 - hitPoints - 1);
+        var charCode : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints - 1);
         var letter : string = String.fromCharCode(65 + charCode);
-        var numberOnYAxis : number = generateRandomNumber(1, 10 - hitPoints);
+        var numberOnYAxis : number = generateRandomNumber(1, NUMBER_OF_RANKS_AND_FILES - hitPoints);
         do {
             numberOnYAxis++;
             letter = String.fromCharCode(65 + charCode);
