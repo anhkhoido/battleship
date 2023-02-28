@@ -9,8 +9,8 @@ var scoreHeading = document.getElementById('score') as HTMLHeadingElement;
 var actualScore : number = 0;
 var actualNumberOfSunkenShips : number = 0;
 var shotsFired : number = 0;
-var sunkenShipsHeading = document.getElementById('sunken_ships') as HTMLHeadingElement;
 var shotsFiredHeading = document.getElementById('shots_fired') as HTMLHeadingElement;
+var counterSunkenShips = document.getElementById('counter_sunken_ships') as HTMLSpanElement;
 
 let explosionSound = document.getElementById('explosion') as HTMLAudioElement;
 let waterSplash = document.getElementById('waterSplash') as HTMLAudioElement;
@@ -152,9 +152,8 @@ function createBoard() : void {
                         shotsFired++;
                         shotsFiredHeading.innerText = 'Shots fired: ' + shotsFired;
                     }
-
                     actualNumberOfSunkenShips = arrayOfShips.map(s => s.isSunken).filter(condition => condition).length;
-                    sunkenShipsHeading.innerText = 'Sunken ships: ' + actualNumberOfSunkenShips + "/5";
+                    counterSunkenShips.innerText = actualNumberOfSunkenShips.toString();
                 });
             }
             rowOfSpans.push(mySpan);
