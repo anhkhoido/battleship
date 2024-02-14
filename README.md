@@ -8,7 +8,7 @@ English | <a href="README-fr_FR.md">Fran&ccedil;ais</a>
 ![Battleship with TypeScript](http://anhkhoido.com/games/pictures/battleshipAkdTypeScriptThumbnail.jpg)
 # Battleship with TypeScript
 <p>This repository simulates Battleship, the classic board game. The front-end is in index.html, the sole HTML file of this project. The HTML page relies on the file script/gameplay.js in order to create and display the grid. Moreover, script/gameplay.js also has a function that randomly places five ships on the grid and hides them. Lastly, the alert box that appears prior to your session is from <a href="https://sweetalert2.github.io">SweetAlert2</a>.</p>
-
+<p>The link to the game: <a href="http://anhkhoido.com/games/battleship">http://anhkhoido.com/games/battleship/</a></p>
 
 ## Languages and tools
 [<img align="left" alt="HTML5" width="22px" src="https://cdn.simpleicons.org/html5/#E34F26" />](https://whatwg.org/)
