@@ -8,7 +8,7 @@
 ![Battleship with TypeScript](http://anhkhoido.com/games/pictures/battleshipAkdTypeScriptThumbnail.jpg)
 # Bataille navale avec TypeScript
 <p>Ce projet simule une partie d'un jeu de soci&eacute;t&eacute; classique, la bataille navale. L'interface visuelle du projet est dans index.html, le seul fichier HTML du projet. La page HTML a besoin du fichier script/gameplay.js afin de cr&eacute;er et afficher la grille de jeu. De plus, script/gameplay.js a une fonction qui permet le placement al&eacute;toire des navires sur la grille et leur dissimulation. Derni&egrave;rement, la bo&icirc;te d'alerte qui appara&icirc;t avant le d&eacute;but d'une partie vient <a href="https://sweetalert2.github.io">SweetAlert2</a>.</p>
-
+<p>Le lien vers le jeu&nbsp;: <a href="http://anhkhoido.com/games/battleship/">http://anhkhoido.com/games/battleship/</a></p>
 
 ## Langages et outils
 [<img align="left" alt="HTML5" width="22px" src="https://cdn.simpleicons.org/html5/#E34F26" />](https://whatwg.org/)
